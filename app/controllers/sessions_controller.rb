@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "You are now logged in, #{params[:username]}!"
-      redirect_to home_path
+      redirect_to root_path
     else
       render :signup
     end
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
       if found_user && found_user.authenticate(params[:password])
         session[:user_id] = found_user.id
         flash[:notice] = "Welcome back #{params[:username]}!"
-        redirect_to home_path
+        redirect_to root_path
       else
         flash[:alert] = "username / password combination is invalid"
         redirect_to login_path(@user)
