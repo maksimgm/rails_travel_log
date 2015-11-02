@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 describe Entry do 
-	it {is_expected.to respond_to :title}
-	it {is_expected.to respond_to :location}
-	it {is_expected.to respond_to :summary}
-	it {is_expected.to respond_to :cost}
-	it {is_expected.to respond_to :image}
-	it {is_expected.to respond_to :video_url}
 
+	fields = [:title, :location, :summary, :cost, :image, :video_url]
+
+	fields.each do |field|
+		it {is_expected.to respond_to field}
+	end
+
+	fields.each do |field|
+		it {should validate_presence_of field}
+	end
+	
 	it {should belong_to :trip}
 
 end
