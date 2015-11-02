@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe User do
   subject {User.new(username: "Maksim", password: "secret", bio:"I love to travel", profile_pic:"gibberjabber" )}
 
