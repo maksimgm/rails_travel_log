@@ -1,5 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Entry, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Entry do 
+	it {is_expected.to respond_to :title}
+	it {is_expected.to respond_to :location}
+	it {is_expected.to respond_to :summary}
+	it {is_expected.to respond_to :cost}
+	it {is_expected.to respond_to :image}
+	it {is_expected.to respond_to :video_url}
+
+	it {should belong_to :trip}
+
 end
