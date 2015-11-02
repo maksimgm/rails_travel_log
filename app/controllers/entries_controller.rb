@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-	before_action :confirm_login_in
+	before_action :confirm_logged_in
 
   def index
   	@entries = Entry.all
