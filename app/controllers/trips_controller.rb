@@ -49,10 +49,10 @@ def trip_params
   params.require(:trip).permit(:title, :location,:duration,:summary,:budget,:video_url)
 end
 
-def confirm_logged_in
-  unless session[:user_id]
-    redirect_to login_path
-  end
-end
+# def confirm_logged_in
+#   unless session[:user_id]
+#     redirect_to login_path
+#   end
+# end
 
 end
