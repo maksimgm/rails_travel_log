@@ -1,18 +1,20 @@
 class TripsController < ApplicationController
+before_action :confirm_logged_in
+
 
 def index
-  @user = User.find_by_id params[:id]
+  @user = User.find_by_id params[:user_id]
   @user_trips = @user.trips
 end
 
 
 def new
-  @user = User.find_by_id params[:id]
+  @user = User.find_by_id params[:user_id]
   @trip = Trip.new
 end
 
 def create
-  @user = User.find_by_id params[:id]
+  @user = User.find_by_id params[:user_id]
   @trip = @user.trips.build trip_params
   if @trip.save
     flash[:success] = "Trip created successfully"
@@ -45,6 +47,12 @@ end
 private
 def trip_params
   params.require(:trip).permit(:title, :location,:duration,:summary,:budget,:video_url)
+end
+
+def confirm_logged_in
+  unless session[:id]
+    redirect_to login_path
+  end
 end
 
 end
