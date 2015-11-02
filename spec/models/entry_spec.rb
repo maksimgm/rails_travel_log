@@ -1,5 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe Entry, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Entry do 
+
+	fields = [:title, :location, :summary, :cost, :image, :video_url]
+
+	fields.each do |field|
+		it {is_expected.to respond_to field}
+	end
+
+	fields.each do |field|
+		it {should validate_presence_of field}
+	end
+	
+	it {should belong_to :trip}
+
 end
