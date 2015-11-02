@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+	before_action :confirm_login_in
+
   def index
   	@entries = Entry.all
   end
@@ -8,11 +10,13 @@ class EntriesController < ApplicationController
   end  
 
   def create
-  	@entry = Entry.new entry_params
+  	@trip = Trip.find(:trip_id)
+
+  	@entry = @trip.build entry_params
 
   	if @entry.save
   		flash[:success] = "Entry created"
-  		redirect_to user_trip_entries_path
+  		redirect_to @trip
   	else
   		render :new
   	end
@@ -26,14 +30,20 @@ class EntriesController < ApplicationController
   	@entry = Entry.find(params[:id])
 
   	if @entry.update(entry_params)
+  		flash[:updated] = "Entry Updated"
+  		redirect_to @entry
+  	else
+  		render :edit
+  	end
   end
 
   def destroy
+
   	@entry = Entry.find(params[:id])
   	@entry.destroy
 
   	# where to redirect_to?
-  	# redirect_to user_trip_entries_path
+  	redirect_to @entry.trip
   end
 
   private
