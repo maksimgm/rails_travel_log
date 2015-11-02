@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_user, only: [:show,:edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
-  def index
-    @users = User.all
+  def home
+    # orginize trip logic...and order
+    @trips = Trip.all
   end
 
   def show
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   def ensure_correct_user
     # compare some params vs something in the session/current_user
     unless params[:id].to_i == session[:user_id]
-      redirect_to all_trips_path, alert: "Not Authorized"
+      redirect_to home_path, alert: "Not Authorized"
     end
   end
 end
