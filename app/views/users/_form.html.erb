@@ -1,0 +1,13 @@
+<%= form_for @user do |f|%>
+  <%=f.label :username%>
+  <%=f.text_field :username class: "form-control" %>
+
+  <!-- ADD UPLOADCARE API BELOW -->
+  <%=f.label :profile_pic%>
+  <%=f.text_field :profile_pic class: "form-control" %>
+
+  <%=f.label :bio%>
+  <%=f.text_field :bio class: "form-control" %>
+
+  <% f.submit class: "btn btn-primary" %>
+<%end%>
