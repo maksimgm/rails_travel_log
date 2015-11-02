@@ -50,7 +50,7 @@ def trip_params
 end
 
 def confirm_logged_in
-  unless session[:id]
+  unless session[:user_id]
     redirect_to login_path
   end
 end
