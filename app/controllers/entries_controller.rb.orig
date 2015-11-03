@@ -8,21 +8,12 @@ class EntriesController < ApplicationController
 
   def new
 <<<<<<< HEAD
-<<<<<<< HEAD
-    @trip = Trip.find(:trip_id)
-=======
-    # if routes are shallow, then only reference trip.
-    # if routes are NOT shallow then users need to be referenced as well
-    @trip = Trip.find_by_id params[:trip_id]
->>>>>>> f22b6faf700e3818638d8e02fc892cda84cf13bd
-=======
     # if routes are shallow, then only reference trip.
     # if routes are NOT shallow then users need to be referenced as well
     @trip = Trip.find_by_id params[:trip_id]
 =======
     @trip = Trip.find(:trip_id)
 >>>>>>> a7480c5765c27cfc244cd2e1bc6ab8aa0c93d246
->>>>>>> 036051a8f1fb200a61135809abb96e97a688c686
   	@entry = Entry.new
   end  
 
