@@ -25,6 +25,10 @@ class TripsController < ApplicationController
     end
   end
 
+  def show
+    @trip = Trip.find_by_id params[:id]
+  end
+
   def edit
     @trip = Trip.find_by_id params[:id]
   end

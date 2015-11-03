@@ -9,6 +9,14 @@
     <%= label_tag(:password)%>
     <%= f.password_field :password, required: true %>
   </p>
+  <p>  
+    <%= label_tag(:bio)%>
+    <%= f.text_area :bio, required: true %>
+  </p>
+  <p>  
+    <%= label_tag(:profile_pic)%>
+    <%= f.text_field :profile_pic, required: true %>
+  </p>
   <p>
     <%= f.submit "Signup", class: "btn btn-primary" %>
   </p>

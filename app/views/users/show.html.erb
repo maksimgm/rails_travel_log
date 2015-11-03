@@ -12,15 +12,16 @@
 <h4>Trip(s):</h4>
 
 <% @user.trips.each do |t| %>
-<p>
-  <%= link_to t.title, t %>
-</p>
-<p>
-  <%= t.summary%>
-</p>
+  <p>
+    <%= link_to t.title, t %>
+  </p>
+  <p>
+    <%= t.summary%>
+  </p>
 <%end%>
-<% if @user.id == current_user.id %>
-  <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-info" %>
 
-  <%= link_to "Delete",current_user, method: :delete, data: {alert: "Are you sure?"}, class: "btn btn-danger" %>
+<% if @user.id == current_user.id %>
+  <%= link_to "Edit", edit_user_path(@user), class: "btn btn-info" %>
+
+  <%= link_to "Delete", @user, method: :delete, data: {alert: "Are you sure?"}, class: "btn btn-danger" %>
 <%end%>
