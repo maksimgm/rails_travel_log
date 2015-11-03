@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get "/login", to: "users#login", as: "login"
+  get "/login", to: "sessions#login", as: "login"
 
-  post "/login", to: "users#attempt_login"
+  post "/login", to: "sessions#attempt_login"
 
-  get "/signup", to: "users#signup", as: "signup"
+  get "/signup", to: "sessions#signup", as: "signup"
 
-  post "/signup", to: "users#create"
+  post "/signup", to: "sessions#create"
 
-  delete "/logout", to: "users#logout", as: "logout"
+  delete "/logout", to: "sessions#logout", as: "logout"
   
 	resources :users do
     resources :trips do
