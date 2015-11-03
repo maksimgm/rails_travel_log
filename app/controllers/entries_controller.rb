@@ -1,12 +1,19 @@
 class EntriesController < ApplicationController
 	before_action :confirm_logged_in
 
+  # entries will not have an index page
   def index
   	@entries = Entry.all
   end
 
   def new
+<<<<<<< HEAD
     @trip = Trip.find(:trip_id)
+=======
+    # if routes are shallow, then only reference trip.
+    # if routes are NOT shallow then users need to be referenced as well
+    @trip = Trip.find_by_id params[:trip_id]
+>>>>>>> f22b6faf700e3818638d8e02fc892cda84cf13bd
   	@entry = Entry.new
   end  
 
