@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   end
 
   resources :trips, only:[:edit, :update, :destroy, :show] do
-    resources :entries, except: :index
+    resources :entries, only: [:new, :create]
   end
+
+  resources :entries, only: [:edit, :update, :destroy]
 end
