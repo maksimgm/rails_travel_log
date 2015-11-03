@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
+<<<<<<< HEAD
   has_many :trips, dependent: :destroy
+=======
+  has_many :trips 
   
+>>>>>>> default_like_to_zero
   has_secure_password
   
   validates :profile_pic, :username, :bio, presence: true

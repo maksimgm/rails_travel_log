@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'users#home'
+<<<<<<< HEAD
 
+root 'users#home'
+=======
   get "/login", to: "sessions#login", as: "login"
 
   post "/login", to: "sessions#attempt_login"
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   post "/signup", to: "sessions#create"
 
   delete "/logout", to: "sessions#logout", as: "logout"
+>>>>>>> user_views
   
 	resources :users do
     resources :trips do
