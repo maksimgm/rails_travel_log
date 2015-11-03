@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
         redirect_to root_path
       else
         flash[:alert] = "username / password combination is invalid"
-        redirect_to login_path(@user)
+        redirect_to login_path
       end
     else
       flash[:alert] = "please enter username and password"

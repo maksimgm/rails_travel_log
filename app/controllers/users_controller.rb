@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :confirm_logged_in
 
   def home
     # orginize trip logic...and order
@@ -18,7 +19,8 @@ class UsersController < ApplicationController
   def update
     @user.update user_params
     if @user.save
-      redirect_to user_path, flash: {success: "#{@user.username} updated!"}
+      flash[:success] = "#{@user.username} updated!"
+      redirect_to @user
     else
       render :edit
     end
@@ -26,7 +28,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy && session[:user_id] = nil
-    redirect_to root_path, flash: {success: "#{@user.username} deleted"}
+    flash[:notice] = "#{@user.username} deleted!"
+    redirect_to root_path
   end
 
   private

@@ -1,18 +1,13 @@
 class EntriesController < ApplicationController
 	before_action :confirm_logged_in
 
-  # entries will not have an index page
-  def index
-  	@entries = Entry.all
-  end
-
   def new
     @trip = Trip.find_by_id params[:trip_id]
   	@entry = Entry.new
   end  
 
   def create
-  	@trip = Trip.find(:trip_id)
+  	@trip = Trip.find_by_id(:trip_id)
 
   	@entry = @trip.build entry_params
 
@@ -25,15 +20,15 @@ class EntriesController < ApplicationController
   end
 
   def edit
-  	@entry = Entry.find(params[:id])
+  	@entry = Entry.find_by_id(params[:id])
   end
 
   def update
-  	@entry = Entry.find(params[:id])
+  	@entry = Entry.find_by_id(params[:id])
 
   	if @entry.update(entry_params)
   		flash[:updated] = "Entry Updated"
-  		redirect_to @entry
+  		redirect_to @entry.trip
   	else
   		render :edit
   	end
@@ -41,7 +36,7 @@ class EntriesController < ApplicationController
 
   def destroy
 
-  	@entry = Entry.find(params[:id])
+  	@entry = Entry.find_by_id(params[:id])
   	@entry.destroy
 
   	# where to redirect_to?
