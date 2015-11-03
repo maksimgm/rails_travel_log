@@ -18,10 +18,13 @@
 
   <!-- ADD UPLOADCARE API BELOW -->
   <%=f.label :profile_pic%>
-  <%=f.image_tag :profile_pic, class: "form-control" %>
+  <%=f.text_field :profile_pic, class: "form-control" %>
 
   <%=f.label :bio%>
   <%=f.text_field :bio, class: "form-control" %>
 
-  <% f.submit class: "btn btn-primary" %>
+  <%=f.label :email%>
+  <%=f.text_field :email, class: "form-control" %>
+  
+  <%= f.submit class: "btn btn-primary" %>
 <%end%>
