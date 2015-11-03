@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div>
+    <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger" %>  
+  </div>
 <% flash.each do |key, value| %>
   <% if key == "notice" %>
     <%= content_tag :div, value, class: "text-center alert alert-warning" %>

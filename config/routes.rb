@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post "/signup", to: "sessions#create"
 
   delete "/logout", to: "sessions#logout", as: "logout"
+
+  resources :resets, only: [:new, :create, :edit, :update]
   
 	resources :users, except: :index do
     resources :trips, only: [:index, :new, :create]

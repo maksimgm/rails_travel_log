@@ -40,9 +40,11 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'capybara'
+  gem 'capybara-email'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'launchy'
+  # gem 'dotenv-rails'
 end
 
 group :development do
