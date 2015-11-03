@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
   end
 
   def new
+    @trip = Trip.find(:trip_id)
   	@entry = Entry.new
   end  
 
