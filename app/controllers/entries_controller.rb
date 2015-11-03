@@ -7,9 +7,9 @@ class EntriesController < ApplicationController
   end  
 
   def create
-  	@trip = Trip.find_by_id(:trip_id)
+  	@trip = Trip.find_by_id(params[:trip_id])
 
-  	@entry = @trip.build entry_params
+  	@entry = @trip.entries.build entry_params
 
   	if @entry.save
   		flash[:success] = "Entry created"

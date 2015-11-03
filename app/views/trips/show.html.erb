@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class="container">
-  <% @trip.entries do |entry| %>
+  <% @trip.entries.each do |entry| %>
   <div>
     <p><%= entry.title %></p>
     <p><%= entry.location %></p>
@@ -17,8 +17,8 @@
     <p><%= entry.video_url %></p>
   
   <% if @trip.user.id == current_user.id %>
-    <%= link_to "Edit Entry", edit_trip_entry(@trip, entry), class: "btn btn-info" %>
-    <%= link_to "Delete Entry", entry, method: :delete, data: { confirm: 'Are you sure?'} class: "btn btn-danger" %>
+    <%= link_to "Edit Entry", edit_trip_entry_path(@trip, entry), class: "btn btn-info" %>
+    <%= link_to "Delete Entry", trip_entry_path(@trip, entry), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger" %>
   <% end %>
   </div>
   <% end %>
