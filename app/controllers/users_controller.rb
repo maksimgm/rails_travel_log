@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def ensure_correct_user
     # compare some params vs something in the session/current_user
     unless params[:id].to_i == session[:user_id]
-      redirect_to home_path, alert: "Not Authorized"
+      redirect_to root_path, alert: "Not Authorized"
     end
   end
 end
