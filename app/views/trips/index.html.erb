@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="page-header">
+    <h1><%= @user.username %>'s Trips</h1>
+    <% if @user.id == current_user.id %>
+      <%= link_to 'Create New Trip', new_user_trip_path, class:'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+<div class="container">
+  <% @trips.each do |x| %>
+    <div>
+      <p>Title: <%= x.title %></p>
+      <p>Location: <%= x.location %></p>
+      <p>Duration: <%= x.duration %></p>
+      <p>Summary: <%= x.summary %></p>
+      <p>Budget: <%= x.budget %></p>
+      <p>Likes: <%= x.like %></p>
+      <% if x.video_url %>
+        <p>Placeholder for video: <%= x.video_url %></p>
+      <% end %>
+      <% if @user.id == current_user.id %>
+        <%= link_to 'Edit Trip', edit_user_trip(x), class:'btn btn-info' %>
+        <%= link_to 'Delete Trip', x, method: :destroy, class:'btn btn-danger'%>
+      <% end %>
+    </div>
+  <%end%>
+</div>
