@@ -4,7 +4,8 @@ before_action :confirm_logged_in
 
 def index
   @user = User.find_by_id params[:user_id]
-  @user_trips = @user.trips
+  # @user_trips = @user.trips
+  @trips = @user.trips
 end
 
 
