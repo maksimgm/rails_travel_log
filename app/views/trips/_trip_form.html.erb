@@ -1,0 +1,26 @@
+<div class="continer">
+  <div class="jumbotron">
+    <%= form_for [@user,@trip] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+
+    <%= f.label :duration %>
+    <%= f.text_field :duration %>
+
+    <%= f.label :summary %>
+    <%= f.text_field :summary %>
+
+    <%= f.label :budget %>
+    <%= f.text_field :budget %>
+
+    <%= f.label :video_url %>
+    <%= f.text_field :video_url %>
+
+    <%= f.submit%>
+
+    <% end -%>
+  </div>
+</div>
