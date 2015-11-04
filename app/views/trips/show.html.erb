@@ -47,6 +47,11 @@
       <%= link_to 'Create New Entry', new_trip_entry_path(@trip), class:'btn btn-primary' %>
     <% end %>
   </div>
+  <div class="alert alert-danger">
+    <ul>
+      
+    </ul>
+  </div>
 </div>
 <div class="container entry-container">
   <% @trip.entries.each do |entry| %>

@@ -1,10 +1,10 @@
 class EntriesController < ApplicationController
 	before_action :confirm_logged_in
 
-  def new
-    @trip = Trip.find_by_id params[:trip_id]
-  	@entry = Entry.new
-  end  
+  # def new
+  #   @trip = Trip.find_by_id params[:trip_id]
+  # 	@entry = Entry.new
+  # end  
 
   def create
   	@trip = Trip.find_by_id(params[:trip_id])
@@ -12,10 +12,10 @@ class EntriesController < ApplicationController
   	@entry = @trip.entries.build entry_params
 
   	if @entry.save
-  		flash[:success] = "Entry created"
-  		redirect_to @trip
+  		# flash[:success] = "Entry created"
+  		render json: @entry
   	else
-  		render :new
+  		render json: @entry.errors.full_messages
   	end
   end
 

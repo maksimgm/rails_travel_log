@@ -21,7 +21,7 @@ $(function() {
 
 
 
-  $('.container').on('click', '.delete', function () {
+  $('.entry-container').on('click', '.delete', function () {
 
     var entryId = $(this).data('entryid');
 
@@ -73,27 +73,31 @@ $('.entry-container').on('submit', 'form', function (e) {
 
     $.ajax({
       type: "POST",// What type of request should this be?
-      url: 'trips/'+ tripId +'/entries/new',// What's the route for this request?
+      url: 'trips/'+ tripId +'/entries',// What's the route for this request?
       dataType: 'json',
       data: data}
     ).done(function(response) {
       //slideDown method
-      var subject= response.subject;
+      var title= response.title;
       var created = response.created_at;
-      var content= response.content;
+      var location= response.location;
+      var summary= response.summary;
+      var cost= response.cost;
+      var image= response.image;
+      var video_url= response.video_url;
+
       if (response.errors) {
         $('.alert ul').html('');
         response.errors.forEach(function (el, i){
           $('.alert ul').append("<li>"+el+"</li>");
         });
         $('.alert').show();
-        $('#note_subject').focus();
       }
       else {
         $('.alert').hide();
-        $(HandlebarsTemplates['notes/index'](response)).prependTo('.container').hide().slideDown(500); //use this for handlebars
+        $(HandlebarsTemplates['notes/index'](response)).prependTo('.entry-container').hide().slideDown(500); //use this for handlebars
         // $('.container').prepend("<div id='note"+response.id+"'><h3>"+subject+"</h3><small>"+created+"</small><p>"+content+"</p></div>"+"<button class='btn btn-info edit'>Edit</button><button class='btn btn-danger delete'>Delete</button>");
-        $('#note_subject').val("").focus();
+        $('#note_subject').val("");
         $('#note_content').val("");
       }
       // Manipulate the server response to render this new note on the page. (Let's wait on writing out this code.)
