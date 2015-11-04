@@ -21,17 +21,17 @@ $(function() {
 
 
 
-  $('.entry-container').on('click', '.delete', function () {
+$('.entry-container').on('click', '.delete', function () {
 
-    var entryId = $(this).data('entryid');
+  var entryId = $(this).data('entryid');
 
-    $.ajax({
-      type: 'delete',
-      url: '/entries/'+ entryId
-    }).done(function () {
-      $('#entry'+entryId).remove();
-    });
+  $.ajax({
+    type: 'delete',
+    url: '/entries/'+ entryId
+  }).done(function () {
+    $('#entry'+entryId).remove();
   });
+});
 
 $('.entry-container').on('submit', 'form', function (e) {
   e.preventDefault();
@@ -87,6 +87,7 @@ $('.entry-container').on('submit', 'form', function (e) {
       var image= response.image;
       var video_url= response.video_url;
 
+      console.log(response.errors);
       if (response.errors) {
         $('.alert ul').html('');
         response.errors.forEach(function (el, i){

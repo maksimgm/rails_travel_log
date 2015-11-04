@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
   		# flash[:success] = "Entry created"
   		render json: @entry
   	else
-  		render json: {errors: @note.errors.full_messages}
+  		render json: {errors: @entry.errors.full_messages}
   	end
   end
 
