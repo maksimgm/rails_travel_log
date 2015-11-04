@@ -6,6 +6,11 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   
+  <%= csrf_meta_tags %>
+  <%= include_uploadcare_widget_from_cdn version: "1.5.5", min: true %>
+  <%= uploadcare_settings %>
+  <%#= include_uploadcare_widget_from_cdn version: "1.5.5", min: true %>
+  <%#= uploadcare_settings %>
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry"></script>
 </head>
 <body>

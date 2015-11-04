@@ -19,23 +19,23 @@
 
 <%= form_for(@user, url: signup_path) do |f|%>
   <p>
-    <%= label_tag(:username)%>
+    <%= label_tag :username%>
     <%= f.text_field :username, autofocus: true %>
   </p>
   <p>  
-    <%= label_tag(:password)%>
+    <%= label_tag :password%>
     <%= f.password_field :password, required: true %>
   </p>
   <p>  
-    <%= label_tag(:bio)%>
+    <%= label_tag :bio%>
     <%= f.text_area :bio, required: true %>
   </p>
   <p>  
-    <%= label_tag(:profile_pic)%>
-    <%= f.text_field :profile_pic, required: true %>
+    <%= label_tag :profile_pic%>
+    <%= f.uploadcare_field :profile_pic, required: true %>
   </p>
   <p>  
-    <%= label_tag(:email)%>
+    <%= label_tag :email%>
     <%= f.text_field :email, required: true %>
   </p>
   <p>
