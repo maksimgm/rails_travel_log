@@ -45,6 +45,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'launchy'
   # gem 'dotenv-rails'
+  gem 'uploadcare-rails', "~> 1.0"
 end
 
 group :development do
