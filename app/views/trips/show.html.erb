@@ -43,8 +43,6 @@
         </div>
       </div>
     </div>
-
-      <%= link_to 'Create New Entry', new_trip_entry_path(@trip), class:'btn btn-primary' %>
     <% end %>
   </div>
   <div class="alert alert-danger">
@@ -56,12 +54,13 @@
 <div class="container entry-container">
   <% @trip.entries.each do |entry| %>
   <div id="entry<%= entry.id %>">
-    <p><%= entry.title %></p>
-    <p><%= entry.location %></p>
-    <p><%= entry.summary %></p>
-    <p><%= entry.cost %></p>
-    <p><%= entry.image %></p>
-    <p><%= entry.video_url %></p>
+    <h3><%= entry.title %></h3>
+    <h4><%= entry.location %></h4>
+    <small><%= entry.created_at%></small>
+    <p class="summary"><%= entry.summary %></p>
+    <p class="cost"><%= entry.cost %></p>
+    <p class="image"><%= entry.image %></p>
+    <p class="video_url"><%= entry.video_url %></p>
   
   <% if @trip.user.id == current_user.id %>
     <button data-entryId=<%= entry.id %> type="button" class="btn btn-info edit" data-toggle="modal" data-target="#<%= entry.id %>Modal">Edit</button>
@@ -75,7 +74,7 @@
             <h4 class="modal-title" id="<%= entry.id %>ModalLabel">Edit Entry</h4>
           </div>
           <div class="modal-body">
-            <%= form_for entry do |f| %>
+            <%= form_for entry, html: {:"data-entryid" => entry.id} do |f| %>
             <div class="form-group">
               <%= f.label :title %>
               <%= f.text_field :title, class:"form-control" %>

@@ -35,23 +35,49 @@ $('.entry-container').on('click', '.delete', function () {
 
 $('.entry-container').on('submit', 'form', function (e) {
   e.preventDefault();
-  var subject = $(this).find('#note_subject').val();
-  var content = $(this).find('#note_content').val();
-  var postId = $(this).data('postid');
-  var data = { note: {subject: subject, content: content } };
-  $('#'+postId+'Modal').modal('toggle');
+  
+
+  var $title = $(this).find('#entry_title').val();
+  var $location = $(this).find('#entry_location').val();
+  var $summary = $(this).find('#entry_summary').val();
+  var $cost = $(this).find('#entry_cost').val();
+  var $image = $(this).find('#entry_image').val();
+  var $video_url = $(this).find('#entry_video_url').val();
+  var entryId = $(this).data('entryid');
+  var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url } };
+  $('#'+entryId+'Modal').modal('toggle');
 
   $.ajax({
     type: "PUT",// What type of request should this be?
-      url: '/notes/'+ postId,// What's the route for this request?
+      url: '/entries/'+ entryId,// What's the route for this request?
       dataType: 'json',
       data: data
   }).done(function(response) {
-    var noteid = "#note"+response.id;
-    var $subj = $(noteid+" h3");
-    var $cont = $(noteid+" p");
-    $subj.text(response.subject);
-    $cont.text(response.content);
+    if (response.errors) {
+      $('.alert ul').html('');
+      response.errors.forEach(function (el, i){
+        $('.alert ul').append("<li>"+el+"</li>");
+      });
+      $('.alert').show();
+    }  else {
+    var entryid = "#entry"+response.id;
+
+    var title = $(entryid+" h3");
+    var location = $(entryid+" h4");
+    var created = $(entryid + " small");
+    var summary = $(entryid + " .summary");
+    var cost = $(entryid + " .cost");
+    var image = $(entryid + " .image");
+    var video_url = $(entryid + " .video_url");
+    
+    title.text(response.title);
+    location.text(response.location);
+    created.text(response.created);
+    summary.text(response.summary);
+    cost.text(response.cost);
+    image.text(response.image);
+    video_url.text(response.video_url);
+    }
   });
 });
 
@@ -96,7 +122,7 @@ $('.entry-container').on('submit', 'form', function (e) {
         $('.alert').show();
       }  else {
         $('.alert').hide();
-        $(HandlebarsTemplates['notes/index'](response)).prependTo('.entry-container').hide().slideDown(500); //use this for handlebars
+        $(HandlebarsTemplates['entries/index'](response)).prependTo('.entry-container').hide().slideDown(500); //use this for handlebars
         $('#newModal #entry_title').val('');
         $('#newModal #entry_location').val('');
         $('#newModal #entry_summary').val('');
@@ -104,7 +130,7 @@ $('.entry-container').on('submit', 'form', function (e) {
         $('#newModal #entry_image').val('');
         $('#newModal #entry_video_url').val('');
       }
-      // Manipulate the server response to render this new note on the page. (Let's wait on writing out this code.)
+      // Manipulate the server response to render this new entry on the page. (Let's wait on writing out this code.)
     });
   });
 });

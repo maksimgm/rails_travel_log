@@ -27,10 +27,11 @@ class EntriesController < ApplicationController
   	@entry = Entry.find_by_id(params[:id])
 
   	if @entry.update(entry_params)
-  		flash[:updated] = "Entry Updated"
-  		redirect_to @entry.trip
+  		# flash[:updated] = "Entry Updated"
+  		# redirect_to @entry.trip
+      render json: @entry
   	else
-  		render :edit
+  		render json: {errors: @entry.errors.full_messages}
   	end
   end
 
