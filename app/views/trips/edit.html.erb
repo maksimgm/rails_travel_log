@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="page-header">
     <h1>Edit <%= @trip.title %></h1>
-    <% if @user.id == current_user.id %>
-      <%= link_to 'Cancel', user_trips_path(@user) %>
+    <% if @trip.user_id == current_user.id %>
+      <%= link_to 'Cancel', @trip %>
     <% end %>
   </div>
 </div>

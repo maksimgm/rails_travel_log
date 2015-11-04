@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   # Stop a logged in user from going to the sign up page
   def prevent_login_signup
     if session[:user_id]
-      redirect_to :back, notice: "You are already logged in"
+      redirect_to root_path, notice: "You are already logged in"
       # what do you think redirect_to :back does?
     end
   end
