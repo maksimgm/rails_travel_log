@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
   		# flash[:success] = "Entry created"
   		render json: @entry
   	else
-  		render json: @entry.errors.full_messages
+  		render json: {errors: @note.errors.full_messages}
   	end
   end
 
@@ -35,12 +35,12 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-
   	@entry = Entry.find_by_id(params[:id])
-  	@entry.destroy
-
-  	# where to redirect_to?
-  	redirect_to @entry.trip
+  	if @entry.destroy
+      render json: {}
+    end
+    # where to redirect_to?
+    # redirect_to @entry.trip
   end
 
   private

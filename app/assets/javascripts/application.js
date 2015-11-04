@@ -27,7 +27,7 @@ $(function() {
 
     $.ajax({
       type: 'delete',
-      url: '/entries/'+postId
+      url: '/entries/'+ entryId
     }).done(function () {
       $('#entry'+entryId).remove();
     });
@@ -62,18 +62,19 @@ $('.entry-container').on('submit', 'form', function (e) {
 
     var tripId = $('.new-button').data('tripid');
 
-    var $title = $('#entry_title').val();// How can you access the subject text from the form?
-    var $location = $('#entry_location').val();// How can you access the content text from the form?
-    var $summary = $('#entry_summary').val();
-    var $cost = $('#entry_cost').val();
-    var $image = $('#entry_image').val();
-    var $video_url = $('#entry_video_url').val();
+    var $title = $('#newModal #entry_title').val();// How can you access the subject text from the form?
+    var $location = $('#newModal #entry_location').val();// How can you access the content text from the form?
+    var $summary = $('#newModal #entry_summary').val();
+    var $cost = $('#newModal #entry_cost').val();
+    var $image = $('#newModal #entry_image').val();
+    var $video_url = $('#newModal #entry_video_url').val();
+    $('#newModal').modal('toggle');
 
     var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url } };
 
     $.ajax({
       type: "POST",// What type of request should this be?
-      url: 'trips/'+ tripId +'/entries',// What's the route for this request?
+      url: '/trips/'+ tripId +'/entries',// What's the route for this request?
       dataType: 'json',
       data: data}
     ).done(function(response) {
@@ -92,13 +93,15 @@ $('.entry-container').on('submit', 'form', function (e) {
           $('.alert ul').append("<li>"+el+"</li>");
         });
         $('.alert').show();
-      }
-      else {
+      }  else {
         $('.alert').hide();
         $(HandlebarsTemplates['notes/index'](response)).prependTo('.entry-container').hide().slideDown(500); //use this for handlebars
-        // $('.container').prepend("<div id='note"+response.id+"'><h3>"+subject+"</h3><small>"+created+"</small><p>"+content+"</p></div>"+"<button class='btn btn-info edit'>Edit</button><button class='btn btn-danger delete'>Delete</button>");
-        $('#note_subject').val("");
-        $('#note_content').val("");
+        $('#newModal #entry_title').val('');
+        $('#newModal #entry_location').val('');
+        $('#newModal #entry_summary').val('');
+        $('#newModal #entry_cost').val('');
+        $('#newModal #entry_image').val('');
+        $('#newModal #entry_video_url').val('');
       }
       // Manipulate the server response to render this new note on the page. (Let's wait on writing out this code.)
     });

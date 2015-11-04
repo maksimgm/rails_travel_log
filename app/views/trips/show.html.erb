@@ -55,7 +55,7 @@
 </div>
 <div class="container entry-container">
   <% @trip.entries.each do |entry| %>
-  <div>
+  <div id="entry<%= entry.id %>">
     <p><%= entry.title %></p>
     <p><%= entry.location %></p>
     <p><%= entry.summary %></p>
@@ -64,8 +64,48 @@
     <p><%= entry.video_url %></p>
   
   <% if @trip.user.id == current_user.id %>
-    <%= link_to "Edit Entry", edit_entry_path(entry), class: "btn btn-info" %>
-    <%= link_to "Delete Entry", entry, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+    <button data-entryId=<%= entry.id %> type="button" class="btn btn-info edit" data-toggle="modal" data-target="#<%= entry.id %>Modal">Edit</button>
+    <button data-entryId=<%= entry.id %> class="btn btn-danger delete">Delete</button>
+
+    <div class="modal fade" id="<%= entry.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="<%= entry.id %>Modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="<%= entry.id %>ModalLabel">Edit Entry</h4>
+          </div>
+          <div class="modal-body">
+            <%= form_for entry do |f| %>
+            <div class="form-group">
+              <%= f.label :title %>
+              <%= f.text_field :title, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :location %>
+              <%= f.text_field :location, class:"form-control search_location"%>
+            </div>
+            <div class="form-group">
+              <%= f.label :summary %>
+              <%= f.text_area :summary, class:"form-control"%>
+            </div>
+            <div class="form-group">
+              <%= f.label :cost %>
+              <%= f.text_field :cost, class:"form-control"%>
+            </div>
+            <div class="form-group">
+              <%= f.label :image %>
+              <%= f.text_field :image, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :video_url %>
+              <%= f.text_field :video_url, class:"form-control" %>
+            </div>
+            <%= f.submit class:"btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
   </div>
   <% end %>
