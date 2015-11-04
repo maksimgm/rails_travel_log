@@ -94,7 +94,10 @@ $('.entry-container').on('submit', 'form', function (e) {
     var $cost = $('#newModal #entry_cost').val();
     var $image = $('#newModal #entry_image').val();
     var $video_url = $('#newModal #entry_video_url').val();
-    $('#newModal').modal('toggle');
+    $('#newModal').modal('toggle').on("shown", function() {
+    var input = $('.search_location')[0];
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  };
 
     var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url } };
 
