@@ -9,7 +9,7 @@
 <div class="container">
   <% @trips.each do |x| %>
     <div>
-      <p>Title: <%= x.title %></p>
+      <p>Title: <%= link_to x.title, x %></p>
       <p>Location: <%= x.location %></p>
       <p>Duration: <%= x.duration %></p>
       <p>Summary: <%= x.summary %></p>

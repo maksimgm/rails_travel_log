@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
   
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry"></script>
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -21,21 +24,22 @@
           <span class="icon-bar"></span>
         </button>
         <img src="http://cdn9.staztic.com/app/a/1266/1266301/diplomat-travel-journal-141647-l-280x280.png" max-width="50px" height="50px" class="pull-left">
+          <% if session[:user_id]%>
+            <p class="navbar-text">User logged in: <strong><%= current_user.username %></strong></p>
+          <% end %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><%= link_to 'Home', root_path %></li>
-          <% if session[:user_id]%>
-            <p class="navbar-text">User logged in: <strong><%= current_user.username %></strong></p>
-          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if session[:user_id] == nil%>
             <li><%= link_to 'Login', login_path %></li>
           <% else %>
+            <li><%= link_to 'My Trips', user_trips_path(current_user) %></li>
             <li><%= link_to 'Create New Trip', new_user_trip_path(current_user) %></li>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% end %>
