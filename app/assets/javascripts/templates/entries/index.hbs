@@ -1,37 +1,56 @@
-  <div id="entry{{id}}">
+<div id="entry{{id}}">
     <h3>{{title}}</h3>
     <h4>{{location}}</h4>
     <small>{{created_at}}</small>
-    <p>{{summary}}</p>
-    <p>{{cost}}</p>
-    <p>{{image}}</p>
-    <p>{{video_url}}</p>
-
+    <p class="summary">{{summary}}</p>
+    <p class="cost">{{cost}}</p>
+    <p class="image">{{image}}</p>
+    <p class="video_url">{{vide_url}}</p>
+  
     <button data-entryId={{id}} type="button" class="btn btn-info edit" data-toggle="modal" data-target="#{{id}}Modal">Edit</button>
     <button data-entryId={{id}} class="btn btn-danger delete">Delete</button>
 
-    <div class="modal fade" id="{{id}}Modal" tabindex="-1" role="dialog" aria-labelledby="{{id}}ModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="{{id}}ModalLabel">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                <form data-postid="{{id}}" class="edit_note" id="edit_note_{{id}}" action="/notes/{{id}}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="20MK6jdsk6xqSDEADXej9LoxholoVieAGJ8GWzq8ffHXWTymFbYdreP5cd/n7HzAC2aeTkVHuH8DdIo5B3FKjQ==" />
-                <div class="form-group">
-                  <label for="note_subject">Subject</label>
-                  <input class="form-control" type="text" value="{{subject}}" name="note[subject]" id="note_subject" />
-                </div>
-                <div class="form-group">
-                  <label for="note_content">Content</label>
-                  <textarea class="form-control" name="note[content]" id="note_content">{{content}}</textarea>
-                </div>
-                <input type="submit" name="commit" value="Update Note" class="btn btn-primary" />
-                </form>          
-              </div>
-            </div>
+    <div class="modal fade" id="{{id}}Modal" tabindex="-1" role="dialog" aria-labelledby="{{id}}Modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="{{id}}ModalLabel">Edit Entry</h4>
           </div>
+          <div class="modal-body">
+            <form data-entryid="{{id}}" class="edit_entry" id="edit_entry_{{id}}" action="/entries/{{id}}" accept-charset="UTF-8" method="post">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="_method" value="patch" />
+            <input type="hidden" name="authenticity_token" value="5iN5gx8YE0mhGChe6UJIsR9fdnxHlqocfpM5gor2tOL+ZUXnj7oxiDbQ/TXZCTq+EaM8aSqE1XdCrU3e1AqNsg==" />
+            <div class="form-group">
+              <label for="entry_title">Title</label>
+              <input class="form-control" type="text" value="{{title}}" name="entry[title]" id="entry_title" />
+            </div>
+            <div class="form-group">
+              <label for="entry_location">Location</label>
+              <input class="form-control search_location" type="text" value="{{location}}" name="entry[location]" id="entry_location" />
+            </div>
+            <div class="form-group">
+              <label for="entry_summary">Summary</label>
+              <textarea class="form-control" name="entry[summary]" id="entry_summary">
+{{summary}}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="entry_cost">Cost</label>
+              <input class="form-control" type="text" value="{{cost}}" name="entry[cost]" id="entry_cost" />
+            </div>
+            <div class="form-group">
+              <label for="entry_image">Image</label>
+              <input class="form-control" type="text" value="{{image}}" name="entry[image]" id="entry_image" />
+            </div>
+            <div class="form-group">
+              <label for="entry_video_url">Video url</label>
+              <input class="form-control" type="text" value="{{video_url}}" name="entry[video_url]" id="entry_video_url" />
+            </div>
+            <input type="submit" name="commit" value="Update Entry" class="btn btn-primary" />
+              </form>          
+            </div>
         </div>
       </div>
-
+    </div>
+  </div>
