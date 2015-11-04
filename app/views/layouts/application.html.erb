@@ -3,8 +3,10 @@
 <head>
   <title>TravelLog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry"></script>
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -52,6 +54,6 @@
   <% end %>
 <% end %>
 <%= yield %>
-
 </body>
+
 </html>
