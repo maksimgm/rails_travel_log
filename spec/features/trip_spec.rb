@@ -1,4 +1,4 @@
-require 'rails_helper'
+# require 'rails_helper'
 
 # feature "update an existing student" do
 #   let(:student){Student.create(first_name:"test",last_name:"user")}
