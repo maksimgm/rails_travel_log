@@ -1,20 +1,19 @@
-<h1>Sessions#login</h1>
-<p>Find me in app/views/sessions/login.html.erb</p>
-
-<%= form_tag(login_path) do %>
-<div class="form-group">
-  <%= label_tag(:username)%>
-  <%= text_field_tag(:username, params[:username], autofocus: true, class:'form-control')%>
+<div class="container-fluid">
+  <div class="page-header">
+    <h1>Travel Log Login</h1>
+  </div>
 </div>
-<div class="form-group">
-  <%= label_tag(:password)%>
-  <%= password_field_tag(:password, class:'form-control')%>
-</div>
-<div class="form-group">
-  <%= submit_tag("Log in", class: "btn btn-primary") %>
-</div>
-<% end %>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <%= bootstrap_form_tag url: '/login' do  |f| %>
+      <%= f.text_field :username %>
 
-<%= link_to "Don't have an account? Sign up here", signup_path%>
+      <%= f.password_field :password %>
+      <%= f.submit "Log in", class:'btn btn-primary' %>
+    <% end %>
+    <br>
+    <p class="pull-left"><%= link_to "Don't have an account? Sign up here", signup_path%></p>
 
-<%= link_to "Forgot your password?", new_reset_path %>
+    <p class="pull-right"><%= link_to "Forgot your password?", new_reset_path %></p>
+  </div>
+</div>
