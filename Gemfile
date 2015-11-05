@@ -34,7 +34,8 @@ gem 'handlebars_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'uploadcare-rails', "~> 1.0"
 gem 'bootstrap_form'
-
+gem 'rails_12factor', :group => :production
+gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -48,7 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'launchy'
-  # gem 'dotenv-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
