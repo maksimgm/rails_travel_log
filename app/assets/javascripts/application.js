@@ -12,10 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-datepicker
 //= require handlebars.runtime
 //= require_tree .
 
+
 $(function() {
+  
+  $('.datepicker').datepicker();
+  
   $('.alert').hide();
 
 // adds google maps autocomplete in new entry modal
@@ -59,8 +64,9 @@ $('.entry-container').on('submit', 'form', function (e) {
   var $cost = $(this).find('#entry_cost').val();
   var $image = $(this).find('#entry_image').val();
   var $video_url = $(this).find('#entry_video_url').val();
+  var $date = $(this).find('#entry_date').val();
   var entryId = $(this).data('entryid');
-  var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url } };
+  var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url, date: $date } };
   $('#'+entryId+'Modal').modal('toggle');
 
   $.ajax({
@@ -76,19 +82,21 @@ $('.entry-container').on('submit', 'form', function (e) {
       });
       $('.alert').show();
     }  else {
+      $('.alert').hide();
     var entryid = "#entry"+response.id;
 
     var title = $(entryid+" h3");
     var location = $(entryid+" h4");
-    var created = $(entryid + " small");
+    var date = $(entryid + " small");
     var summary = $(entryid + " .summary");
     var cost = $(entryid + " .cost");
     var image = $(entryid + " .image");
     var video_url = $(entryid + " .video_url");
     
+
     title.text(response.title);
     location.text(response.location);
-    created.text(response.created);
+    date.text(response.date);
     summary.text(response.summary);
     cost.text(response.cost);
     image.text(response.image);
@@ -109,10 +117,11 @@ $('.entry-container').on('submit', 'form', function (e) {
     var $summary = $('#newModal #entry_summary').val();
     var $cost = $('#newModal #entry_cost').val();
     var $image = $('#newModal #entry_image').val();
+    var $date = $('#newModal #entry_date').val();
     var $video_url = $('#newModal #entry_video_url').val();
     $('#newModal').modal('toggle');
 
-    var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url } };
+    var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url, date: $date } };
 
     $.ajax({
       type: "POST",// What type of request should this be?
@@ -122,7 +131,7 @@ $('.entry-container').on('submit', 'form', function (e) {
     ).done(function(response) {
       //slideDown method
       var title= response.title;
-      var created = response.created_at;
+      var created = response.date;
       var location= response.location;
       var summary= response.summary;
       var cost= response.cost;
@@ -144,6 +153,7 @@ $('.entry-container').on('submit', 'form', function (e) {
         $('#newModal #entry_summary').val('');
         $('#newModal #entry_cost').val('');
         $('#newModal #entry_image').val('');
+        $('#newModal #entry_date').val('');
         $('#newModal #entry_video_url').val('');
       }
       // Manipulate the server response to render this new entry on the page. (Let's wait on writing out this code.)

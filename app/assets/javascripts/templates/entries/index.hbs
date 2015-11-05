@@ -1,11 +1,11 @@
 <div id="entry{{id}}">
     <h3>{{title}}</h3>
+    <small>{{date}}</small>
     <h4>{{location}}</h4>
-    <small>{{created_at}}</small>
     <p class="summary">{{summary}}</p>
     <p class="cost">{{cost}}</p>
     <p class="image"> <img src="{{image}}" alt=""> </p>
-    <p class="video_url">{{vide_url}}</p>
+    <p class="video_url">{{video_url}}</p>
   
     <button data-entryId={{id}} type="button" class="btn btn-info edit" data-toggle="modal" data-target="#{{id}}Modal">Edit</button>
     <button data-entryId={{id}} class="btn btn-danger delete">Delete</button>
@@ -32,8 +32,7 @@
             </div>
             <div class="form-group">
               <label for="entry_summary">Summary</label>
-              <textarea class="form-control" name="entry[summary]" id="entry_summary">
-{{summary}}</textarea>
+              <textarea class="form-control" name="entry[summary]" id="entry_summary">{{summary}}</textarea>
             </div>
             <div class="form-group">
               <label for="entry_cost">Cost</label>
@@ -42,6 +41,10 @@
             <div class="form-group">
               <label for="entry_image">Image</label>
               <input class="form-control" type="text" value="{{image}}" name="entry[image]" id="entry_image" />
+            </div>
+            <div class="form-group">
+              <label for="entry_date">Date</label>
+              <input class="form-control datepicker" type="text" value="{{date}}" name="entry[date]" id="entry_date" />
             </div>
             <div class="form-group">
               <label for="entry_video_url">Video url</label>
