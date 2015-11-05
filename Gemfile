@@ -31,6 +31,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'handlebars_assets'
+gem 'bootstrap-datepicker-rails'
+gem 'uploadcare-rails', "~> 1.0"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -45,7 +48,6 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'launchy'
   # gem 'dotenv-rails'
-  gem 'uploadcare-rails', "~> 1.0"
 end
 
 group :development do
