@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
         flash[:notice] = "Welcome back #{params[:username]}!"
         redirect_to root_path
       else
-        flash[:alert] = "username / password combination is invalid"
+        flash[:alert] = "Incorrent username or password"
         redirect_to login_path
       end
     else
