@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 feature "create a new entry" do
 	background do
 		visit new_trip_entry_path
