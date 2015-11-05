@@ -34,6 +34,10 @@
               <%= f.uploadcare_field :image, class:"form-control" %>
             </div>
             <div class="form-group">
+              <%= f.label :date %><br>
+              <%= f.text_field :date, class:"form-control datepicker" %>
+            </div>
+            <div class="form-group">
               <%= f.label :video_url %>
               <%= f.text_field :video_url, class:"form-control" %>
             </div>
@@ -55,8 +59,8 @@
   <% @trip.entries.each do |entry| %>
   <div id="entry<%= entry.id %>">
     <h3><%= entry.title %></h3>
+    <small><%= entry.date%></small>
     <h4><%= entry.location %></h4>
-    <small><%= entry.created_at%></small>
     <p class="summary"><%= entry.summary %></p>
     <p class="cost"><%= entry.cost %></p>
     <p class="image"><%= entry.image %></p>
@@ -93,7 +97,11 @@
             </div>
             <div class="form-group">
               <%= f.label :image %>
-              <%= f.text_field :image, class:"form-control" %>
+              <%= f.uploadcare_field :image, class:"form-control" %>
+            </div>
+            <div>
+              <%= f.label :date %><br>
+              <%= f.text_field :date, class:'form-control datepicker' %>
             </div>
             <div class="form-group">
               <%= f.label :video_url %>
