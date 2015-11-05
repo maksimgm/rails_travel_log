@@ -82,6 +82,7 @@ $('.entry-container').on('submit', 'form', function (e) {
       });
       $('.alert').show();
     }  else {
+      $('.alert').hide();
     var entryid = "#entry"+response.id;
 
     var title = $(entryid+" h3");
