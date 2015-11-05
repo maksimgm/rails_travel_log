@@ -19,6 +19,28 @@
 
 $(function() {
   
+  if($('.search_location')[0]){   
+  var input = $('.search_location')[0];
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+
+  function initMap() {
+  var myLatLng = {lat: -15.363, lng: -121.044};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+  }
+  if (document.getElementById('map')) {
+initMap();
+}
   $('.datepicker').datepicker();
   
   $('.alert').hide();

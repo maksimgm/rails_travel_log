@@ -6,9 +6,15 @@
     <% end %>
   </div>
 </div>
+<div class="containter">
+  <div class="row" id="mapContainter">
+    <div class="col-md-8 col-md-offset-2" id="map"></div>
+  </div>
+</div>
+
 <div class="container">
   <% @trips.each do |x| %>
-    <div>
+    <div class="row">
       <p>Title: <%= link_to x.title, x %></p>
       <p>Location: <%= x.location %></p>
       <p>Duration: <%= x.duration %></p>
@@ -18,10 +24,14 @@
       <% if x.video_url %>
         <p>Placeholder for video: <%= x.video_url %></p>
       <% end %>
+  </div>
+  <div class="row">
       <% if @user.id == current_user.id %>
         <%= link_to 'Edit Trip', edit_trip_path(x), class:'btn btn-info' %>
         <%= link_to 'Delete Trip', x, method: :destroy, class:'btn btn-danger'%>
       <% end %>
     </div>
   <%end%>
+
 </div>
+
