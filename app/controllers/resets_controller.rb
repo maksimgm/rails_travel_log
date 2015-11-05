@@ -8,7 +8,8 @@ class ResetsController < ApplicationController
     if user
       user.generate_password_reset_token!
       Reset.password_reset(user).deliver_now
-      redirect_to login_path, notice: "Email sent"
+      flash[:notice] = "Email sent"
+      redirect_to login_path
     else
       flash.now[:alert] = "Email not found"
       render :new

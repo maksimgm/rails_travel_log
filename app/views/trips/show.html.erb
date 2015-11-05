@@ -58,17 +58,19 @@
 <div class="container entry-container">
   <% @trip.entries.each do |entry| %>
   <div id="entry<%= entry.id %>">
-    <h3><%= entry.title %></h3>
-    <small><%= entry.date%></small>
-    <h4><%= entry.location %></h4>
-    <p class="summary"><%= entry.summary %></p>
-    <p class="cost"><%= entry.cost %></p>
-    <p class="image"><%= entry.image %></p>
-    <p class="video_url"><%= entry.video_url %></p>
-  
-  <% if @trip.user.id == current_user.id %>
-    <button data-entryId=<%= entry.id %> type="button" class="btn btn-info edit" data-toggle="modal" data-target="#<%= entry.id %>Modal">Edit</button>
-    <button data-entryId=<%= entry.id %> class="btn btn-danger delete">Delete</button>
+    <div class="well col-md-8 col-md-offset-2">
+      <h3><%= entry.title %></h3>
+      <small><%= entry.date%></small>
+      <h4><span><%= entry.location %></span></h4>
+      <p class="summary"><span><%= entry.summary %></span></p>
+      <p class="cost"><span><%= entry.cost %></span></p>
+      <img src="<%= entry.image %>" alt="pic" class="img-responsive image">
+      <div class="video_url"><%= entry.video_url.html_safe %></div>
+    
+    <% if @trip.user.id == current_user.id %>
+      <button data-entryId=<%= entry.id %> type="button" class="btn btn-info edit" data-toggle="modal" data-target="#<%= entry.id %>Modal">Edit</button>
+      <button data-entryId=<%= entry.id %> class="btn btn-danger delete">Delete</button>
+    </div>
 
     <div class="modal fade entry-modal" id="<%= entry.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="<%= entry.id %>Modal">
       <div class="modal-dialog" role="document">
