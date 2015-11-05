@@ -86,10 +86,10 @@ $('.entry-container').on('submit', 'form', function (e) {
     var entryid = "#entry"+response.id;
 
     var title = $(entryid+" h3");
-    var location = $(entryid+" h4");
+    var location = $(entryid+" h4 span");
     var date = $(entryid + " small");
-    var summary = $(entryid + " .summary");
-    var cost = $(entryid + " .cost");
+    var summary = $(entryid + " .summary span");
+    var cost = $(entryid + " .cost span");
     var image = $(entryid + " .image");
     var video_url = $(entryid + " .video_url");
     
@@ -99,7 +99,7 @@ $('.entry-container').on('submit', 'form', function (e) {
     date.text(response.date);
     summary.text(response.summary);
     cost.text(response.cost);
-    image.text(response.image);
+    image.attr('src', response.image);
     video_url.text(response.video_url);
     }
   });

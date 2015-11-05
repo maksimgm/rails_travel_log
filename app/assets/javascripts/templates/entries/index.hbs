@@ -4,8 +4,8 @@
     <h4>{{location}}</h4>
     <p class="summary">{{summary}}</p>
     <p class="cost">{{cost}}</p>
-    <p class="image"> <img src="{{image}}" alt=""> </p>
-    <p class="video_url">{{video_url}}</p>
+    <img src="{{image}}" alt="" class="img-responsive image">
+    <div class="video_url">{{video_url}}</div>
   
     <button data-entryId={{id}} type="button" class="btn btn-info edit" data-toggle="modal" data-target="#{{id}}Modal">Edit</button>
     <button data-entryId={{id}} class="btn btn-danger delete">Delete</button>
