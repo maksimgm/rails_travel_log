@@ -66,7 +66,7 @@
     <button data-entryId=<%= entry.id %> type="button" class="btn btn-info edit" data-toggle="modal" data-target="#<%= entry.id %>Modal">Edit</button>
     <button data-entryId=<%= entry.id %> class="btn btn-danger delete">Delete</button>
 
-    <div class="modal fade" id="<%= entry.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="<%= entry.id %>Modal">
+    <div class="modal fade entry-modal" id="<%= entry.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="<%= entry.id %>Modal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
