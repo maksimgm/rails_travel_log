@@ -2,17 +2,17 @@
 <p>Find me in app/views/sessions/login.html.erb</p>
 
 <%= form_tag(login_path) do %>
-<p>
+<div class="form-group">
   <%= label_tag(:username)%>
-  <%= text_field_tag(:username, params[:username], autofocus: true)%>
-</p>
-<p>
+  <%= text_field_tag(:username, params[:username], autofocus: true, class:'form-control')%>
+</div>
+<div class="form-group">
   <%= label_tag(:password)%>
-  <%= password_field_tag(:password)%>
-</p>
-<p>
+  <%= password_field_tag(:password, class:'form-control')%>
+</div>
+<div class="form-group">
   <%= submit_tag("Log in", class: "btn btn-primary") %>
-</p>
+</div>
 <% end %>
 
 <%= link_to "Don't have an account? Sign up here", signup_path%>

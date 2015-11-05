@@ -33,6 +33,7 @@ gem 'bootswatch-rails'
 gem 'handlebars_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'uploadcare-rails', "~> 1.0"
+gem 'bootstrap_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
