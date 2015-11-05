@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#logout", as: "logout"
 
+  get "/search", to: "search#search", as: 'search'
+
   resources :resets, only: [:new, :create, :edit, :update]
   
 	resources :users, except: :index do
