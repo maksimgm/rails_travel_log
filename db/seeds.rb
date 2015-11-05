@@ -36,6 +36,7 @@ e4 = Entry.create(title:"Stay at home" ,location:"South Park" ,summary:"Watching
 
 
 u1.trips << t1
+u1.trips << t2
 u2.trips << t2
 u3.trips << t3
 u4.trips << t4
