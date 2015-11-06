@@ -20,7 +20,7 @@
       <% end %>
       <% if @user.id == current_user.id %>
         <%= link_to 'Edit Trip', edit_trip_path(x), class:'btn btn-info' %>
-        <%= link_to 'Delete Trip', x, method: :destroy, class:'btn btn-danger'%>
+        <%= link_to 'Delete Trip', x, method: :delete, class:'btn btn-danger'%>
       <% end %>
     </div>
   <%end%>
