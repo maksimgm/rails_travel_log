@@ -18,6 +18,10 @@
               <%= f.text_field :title, class:"form-control" %>
             </div>
             <div class="form-group">
+              <%= f.label :date %><br>
+              <%= f.text_field :date, class:"form-control datepicker" %>
+            </div>
+            <div class="form-group">
               <%= f.label :location %>
               <%= f.text_field :location, class:"form-control search_location"%>
             </div>
@@ -32,10 +36,6 @@
             <div class="form-group">
               <%= f.label :image %>
               <%= f.uploadcare_field :image, class:"form-control" %>
-            </div>
-            <div class="form-group">
-              <%= f.label :date %><br>
-              <%= f.text_field :date, class:"form-control datepicker" %>
             </div>
             <div class="form-group">
               <%= f.label :video_url %>
@@ -85,6 +85,10 @@
               <%= f.label :title %>
               <%= f.text_field :title, class:"form-control" %>
             </div>
+            <div>
+              <%= f.label :date %><br>
+              <%= f.text_field :date, class:'form-control datepicker' %>
+            </div>
             <div class="form-group">
               <%= f.label :location %>
               <%= f.text_field :location, class:"form-control search_location"%>
@@ -100,10 +104,6 @@
             <div class="form-group">
               <%= f.label :image %>
               <%= f.uploadcare_field :image, class:"form-control" %>
-            </div>
-            <div>
-              <%= f.label :date %><br>
-              <%= f.text_field :date, class:'form-control datepicker' %>
             </div>
             <div class="form-group">
               <%= f.label :video_url %>
