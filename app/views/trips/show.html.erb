@@ -1,14 +1,21 @@
 <div class="container-fluid">
   <div class="page-header">
     <div class="row">
-      <h1><%= @trip.title %> <small><%= @trip.summary%></small></h1>
-      <h3>Country: <%= @trip.location %></h3>
-      <h4>Duration: <%= @trip.duration %></h4>
-      <h4>Budget: $<%= @trip.budget %></h4>
-
+     <div class="col-xs-8 col-xs-offset-2">
+      <h2 class="text-center"><%= @trip.title %></h2>
+      <div class="well well-sm">
+        <h3><small><%= @trip.summary%></small></h3>        
+        <h4 class="text-center">Country: <%= @trip.location %></h4>
+        <h4 class="text-center">Duration: <%= @trip.duration %></h4>
+        <h4 class="text-center">Budget: $<%= @trip.budget %></h4>
+        <% if @trip.user.id == current_user.id %>
+      <button class="btn btn-primary new-button btn-block" data-toggle="modal" data-target="#newModal" data-tripid=<%= @trip.id %>>Create New Entry</button>
+      <%end%>
+      </div>
+    </div>
     </div>
     <% if @trip.user.id == current_user.id %>
-      <button class="btn btn-primary new-button" data-toggle="modal" data-target="#newModal" data-tripid=<%= @trip.id %>>Create New Entry</button>
+      
 
       <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModal">
       <div class="modal-dialog" role="document">
