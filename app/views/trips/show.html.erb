@@ -1,6 +1,12 @@
 <div class="container-fluid">
   <div class="page-header">
-    <h1><%= @trip.title %></h1>
+    <div class="row">
+      <h1><%= @trip.title %> <small><%= @trip.summary%></small></h1>
+      <h3>Country: <%= @trip.location %></h3>
+      <h4>Duration: <%= @trip.duration %></h4>
+      <h4>Budget: $<%= @trip.budget %></h4>
+
+    </div>
     <% if @trip.user.id == current_user.id %>
       <button class="btn btn-primary new-button" data-toggle="modal" data-target="#newModal" data-tripid=<%= @trip.id %>>Create New Entry</button>
 
@@ -59,11 +65,11 @@
   <% @trip.entries.each do |entry| %>
   <div id="entry<%= entry.id %>">
     <div class="well col-md-8 col-md-offset-2">
-      <h3><%= entry.title %></h3>
+      <h3 class="text-center"><%= entry.title %></h3>
       <small><%= entry.date%></small>
       <h4><span><%= entry.location %></span></h4>
       <p class="summary"><span><%= entry.summary %></span></p>
-      <p class="cost"><span><%= entry.cost %></span></p>
+      <p class="cost">$<span><%= entry.cost %></span></p>
       <img src="<%= entry.image %>" alt="pic" class="img-responsive image">
       <div class="video_url"><%= entry.video_url.html_safe %></div>
     

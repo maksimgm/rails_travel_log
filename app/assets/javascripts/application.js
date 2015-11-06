@@ -100,7 +100,7 @@ $('.entry-container').on('submit', 'form', function (e) {
     summary.text(response.summary);
     cost.text(response.cost);
     image.attr('src', response.image);
-    video_url.text(response.video_url);
+    video_url.html(response.video_url);
     }
   });
 });

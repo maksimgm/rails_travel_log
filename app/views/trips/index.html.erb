@@ -8,13 +8,13 @@
 </div>
 <div class="container">
   <% @trips.each do |x| %>
-    <div>
+    <div class="well">
       <p>Title: <%= link_to x.title, x %></p>
       <p>Location: <%= x.location %></p>
       <p>Duration: <%= x.duration %></p>
       <p>Summary: <%= x.summary %></p>
-      <p>Budget: <%= x.budget %></p>
-      <p>Likes: <%= x.like %></p>
+      <p>Budget: $<%= x.budget %></p>
+      <!-- <p>Likes: <%= x.like %></p> -->
       <% if x.video_url %>
         <p>Placeholder for video: <%= x.video_url %></p>
       <% end %>
