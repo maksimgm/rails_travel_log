@@ -1,39 +1,42 @@
-<div class="container-fluid">
-  <div class="page-header">
-    <h1><%= @user.username %>'s Profile</h1>
-    <% if @user.id == current_user.id %>
-    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-info" %>
 
-    <%= link_to "Delete", @user, method: :delete, data: {alert: "Are you sure?"}, class: "btn btn-danger" %>
-  <%end%>
-  </div>
-</div>
+<h1 class="text-center"><%= @user.username %>'s Profile</h1>
 
 <div class="container">
-  <h3>Username:</h3>
-  <p><%=@user.username%></p>
+  <div class="row">
+    <div class="thumbnail col-xs-8 col-xs-offset-2 ">
+      
+      <!-- <h3 class="text-center"><%=@user.username%></h3> -->
+      <img src="<%=@user.profile_pic%>" alt="profile pic" class="profile-pic img-responsive">
 
-  <h3>Profile Pic:</h3>
-  <p><img src="<%=@user.profile_pic%>" alt="profile pic" class="profile-pic img-responsive"></p>
+      <h5>Biography:</h5>
+      <p><%=@user.bio%></p>
 
-  <h3>Biography:</h3>
-  <p><%=@user.bio%></p>
-
-  <h4>Trip(s):</h4>
-
+  <h4 class="text-left">Trip(s):</h4>
   <% @user.trips.each do |t| %>
-    <div class="well col-md-4">
+    <div class="well well-sm">
       <p>
         Trip: <%= link_to t.title, t %>
       </p>
-      <p>
+      <!-- <p>
         Destination: <%= t.location %>
-      </p>
+      </p> -->
       <p>
         Summary: <%= t.summary%>
       </p>
     </div>
   <%end%>
+
+  <!-- <h5>Profile Pic:</h5> -->
+
+    <% if @user.id == current_user.id %>
+    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-info btn-block" %>
+
+    <%= link_to "Delete", @user, method: :delete, data: {alert: "Are you sure?"}, class: "btn btn-danger btn-block" %>
+  <%end%>
+      
+    </div>
+
+  </div>
 
   
   
