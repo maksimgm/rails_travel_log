@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def home
     # orginize trip logic...and order
-    @trips = Trip.all
+    @trips = Trip.order('id desc')
   end
 
   def show
