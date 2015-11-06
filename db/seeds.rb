@@ -14,6 +14,8 @@ u3 = User.create(username:"Stan" , password:"12345" , bio:"Seeking the meaning o
 
 u4 = User.create(username:"Kenny" ,password:"12345" , bio:"I mumble a lot, and Cartman is a jackass" , profile_pic:"http://www.southpark.com.br/wp-content/uploads/2012/06/kenny-south-park.jpg" , email:"respectmyauthority@gmail.com")
 
+u5 = User.create(username:"Chef" ,password:"12345" , bio:"Hello Children" , profile_pic:"http://southparkstudios.mtvnimages.com/shared/characters/adults/chef.png" , email:"respectmyauthority@gmail.com")
+
 
 t1 = Trip.create(title:"Life changing experiences" , location:"Peru" , duration:"2 weeks" , summary:"Spend most of my days in the woods, having wacky experiences using Ayawaska" , budget: 2000, video_url:"www.longliveflash.com" )
 
@@ -40,8 +42,12 @@ u1.trips << t2
 u2.trips << t2
 u3.trips << t3
 u4.trips << t4
+u5.trips << t1
 
 t1.entries << e1
 t2.entries << e2
-t3.entries << e3
+t2.entries << e2
+t3.entries << e4
 t4.entries << e4
+t1.entries << e3
+t1.entries << e2
