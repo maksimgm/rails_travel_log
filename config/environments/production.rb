@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
 
-  config.action_mailer.default_url_options = { host: 'https://mysterious-oasis-5854.herokuapp.com', port: 80 }
+  config.action_mailer.default_url_options = { host: 'https://mysterious-oasis-5854.herokuapp.com', port: 443 }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
 
@@ -10,8 +10,8 @@ Rails.application.configure do
     :address   => "smtp.mandrillapp.com",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
     :enable_starttls_auto => true, # detects and uses STARTTLS
-    :user_name => Rails.application.secrets[:MANDRILL_USERNAME],
-    :password  => Rails.application.secrets[:MANDRILL_PASSWORD], # SMTP password is any valid API key
+    :user_name => Rails.application.secrets[:mandrill_username],
+    :password  => Rails.application.secrets[:mandrill_password], # SMTP password is any valid API key
   }
   # Code is not reloaded between requests.
   config.cache_classes = true
