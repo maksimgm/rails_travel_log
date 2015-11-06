@@ -18,29 +18,46 @@
 
 
 $(function() {
-  
+
+  var myLatLngs = [{lat: -15.363, lng: -121.044}, {lat: -15.363, lng: -119.044}, {lat: -15.363, lng: -125.044}];
+
+  var myCountries = [];
+  myCountries.push($('#country').val());
+
   if($('.search_location')[0]){   
   var input = $('.search_location')[0];
   var autocomplete = new google.maps.places.Autocomplete(input);
   }
 
+// googleMap Map on user trips
   function initMap() {
-  var myLatLng = {lat: -15.363, lng: -121.044};
+
+  var myCenter = {lat: 23.075136, lng: -9.632072};
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
+    zoom: 2,
+    center: myCenter
   });
+  setMarkers(map);
+};
 
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
+function setMarkers(map) {
+  myLatLngs.forEach(function(latlng) {
+  
+    var marker = new google.maps.Marker({
+      position: {lat: latlng.lat, lng: latlng.lng },
+      map: map,
+      title: 'Hello World!'
+    });
   });
-  }
-  if (document.getElementById('map')) {
-initMap();
+  
 }
+
+
+  if (document.getElementById('map')) {
+    initMap();
+  }
+
   $('.datepicker').datepicker();
   
   $('.alert').hide();

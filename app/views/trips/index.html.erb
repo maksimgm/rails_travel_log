@@ -6,9 +6,11 @@
     <% end %>
   </div>
 </div>
+
+<!-- googleMaps Map -->
 <div class="containter">
   <div class="row" id="mapContainter">
-    <div class="col-md-8 col-md-offset-2" id="map"></div>
+    <div class="col-md-10 col-md-offset-1" id="map"></div>
   </div>
 </div>
 
@@ -16,7 +18,7 @@
   <% @trips.each do |x| %>
     <div class="row">
       <p>Title: <%= link_to x.title, x %></p>
-      <p>Location: <%= x.location %></p>
+      <p>Location:<span id="country"><%= x.location %></span></p>
       <p>Duration: <%= x.duration %></p>
       <p>Summary: <%= x.summary %></p>
       <p>Budget: <%= x.budget %></p>
