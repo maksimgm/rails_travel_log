@@ -1,14 +1,17 @@
 <div id="entry{{id}}">
-    <h3>{{title}}</h3>
+  <div class="well col-md-8 col-md-offset-2">
+    <h3 class="text-center">{{title}}</h3>
     <small>{{date}}</small>
-    <h4>{{location}}</h4>
-    <p class="summary">{{summary}}</p>
-    <p class="cost">{{cost}}</p>
+    <h4><span>{{location}}</span></h4>
+    <p class="summary"><span>{{summary}}</span></p>
+    <p class="cost">$<span>{{cost}}</span></p>
     <img src="{{image}}" alt="" class="img-responsive image">
-    <div class="video_url">{{video_url}}</div>
+    <br>
+    <div class="video_url text-center">{{video_url}}</div>
   
     <button data-entryId={{id}} type="button" class="btn btn-info edit" data-toggle="modal" data-target="#{{id}}Modal">Edit</button>
     <button data-entryId={{id}} class="btn btn-danger delete">Delete</button>
+  </div>
 
     <div class="modal fade entry-modal" id="{{id}}Modal" tabindex="-1" role="dialog" aria-labelledby="{{id}}Modal">
       <div class="modal-dialog" role="document">

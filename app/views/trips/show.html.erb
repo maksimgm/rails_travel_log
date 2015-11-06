@@ -62,7 +62,7 @@
   </div>
 </div>
 <div class="container entry-container">
-  <% @trip.entries.each do |entry| %>
+  <% @trip.entries.reverse.each do |entry| %>
   <div id="entry<%= entry.id %>">
     <div class="well col-md-8 col-md-offset-2">
       <h3 class="text-center"><%= entry.title %></h3>
@@ -71,7 +71,8 @@
       <p class="summary"><span><%= entry.summary %></span></p>
       <p class="cost">$<span><%= entry.cost %></span></p>
       <img src="<%= entry.image %>" alt="pic" class="img-responsive image">
-      <div class="video_url"><%= entry.video_url.html_safe %></div>
+      <br>
+      <div class="video_url text-center"><%= entry.video_url.html_safe %></div>
     
     <% if @trip.user.id == current_user.id %>
       <button data-entryId=<%= entry.id %> type="button" class="btn btn-info edit" data-toggle="modal" data-target="#<%= entry.id %>Modal">Edit</button>
