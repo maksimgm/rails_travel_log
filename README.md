@@ -1,9 +1,9 @@
 # Travel Log
+##[**Heroku Link**](https://mysterious-oasis-5854.herokuapp.com/)
 
 ##Summary
 Travel Log is a full-stack Ruby on Rails application which enables users to document their journey with other users by sharing photos and videos as throughout their travels. Users can have have many trips, and one trip can have many entries. Additionally, users can comment on trips posted by other users.
 
-[**Heroku Link**](https://mysterious-oasis-5854.herokuapp.com/)
 ## Installation
 	git clone git@github.com:maksimgm/rails_travel_log.git
 	cd rails_travel_log
