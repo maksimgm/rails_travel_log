@@ -155,7 +155,7 @@ $('.entry-container').on('submit', 'form', function (e) {
         $('#newModal #entry_image').val('');
         $('#newModal #entry_date').val('');
         $('#newModal #entry_video_url').val('');
-        uploadcare.Widget('[role=uploadcare-uploader]').value(null)
+        uploadcare.Widget('[role=uploadcare-uploader]').value(null);
       }
       // Manipulate the server response to render this new entry on the page. (Let's wait on writing out this code.)
     });

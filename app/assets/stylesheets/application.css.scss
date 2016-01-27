@@ -15,21 +15,15 @@
  *= require_self
  */
 
-
-// Example using bootswatch
-//
-// First import  variables
 @import "bootswatch/journal/variables";
 
-// Then bootstrap itself
 @import "bootstrap";
 
-// And finally bootswatch style itself
 @import "bootswatch/journal/bootswatch";
 
-// If you want to import your own styles just use 
-
-/*@import "name_of_scss file"*/
+body {
+  background: url(linedpaper.png) repeat 0 0;
+}
 
 .pac-container {
 	background-color: #FFF;
