@@ -12,7 +12,7 @@
       <p><%=@user.bio%></p>
 
   <h4 class="text-left">Trip(s):</h4>
-  <div id="map"></div>
+  <div id="map" style="height:400px; width:400px;"></div>
   <% @user.trips.each do |t| %>
     <div class="well well-sm">
       <p>
