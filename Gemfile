@@ -50,6 +50,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'launchy'
   gem 'dotenv-rails'
+  gem 'gmaps4rails'
 end
 
 group :development do
