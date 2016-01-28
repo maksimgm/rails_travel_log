@@ -51,6 +51,8 @@ group :development, :test do
   gem 'launchy'
   gem 'dotenv-rails'
   gem 'gmaps4rails'
+  gem 'geocoder'
+  gem 'underscore-rails'
 end
 
 group :development do

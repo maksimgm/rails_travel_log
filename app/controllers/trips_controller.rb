@@ -6,6 +6,13 @@ class TripsController < ApplicationController
     @user = User.find_by_id params[:user_id]
     # @user_trips = @user.trips
     @trips = @user.trips
+    # @hash = Gmaps4rails.build_markers(@trips) do |trip, marker|
+    #   marker.lat trip.latitude
+    #   marker.lng trip.longitude
+    #   marker.json({:id => trip.id})
+    #   # marker.infowindow trip.entries
+  
+  
   end
 
 
@@ -43,6 +50,7 @@ class TripsController < ApplicationController
       render :edit
     end
   end
+
 
   def destroy
     @trip = Trip.find_by_id params[:id]

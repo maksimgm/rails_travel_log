@@ -12,7 +12,10 @@
       <p><%=@user.bio%></p>
 
   <h4 class="text-left">Trip(s):</h4>
-  <div id="map" style="height:400px; width:400px;"></div>
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
+
   <% @user.trips.each do |t| %>
     <div class="well well-sm">
       <p>
@@ -42,3 +45,23 @@
   
   
 </div>
+<script>
+
+handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {
+      disableDefaultUI: true
+      // pass in other Google Maps API options here
+    },
+    internal: {
+      id: 'map'
+    }
+    // map.setCenter(place.geometry.location);
+    // map.setZoom(16);
+  },
+  function(){    
+    markers = handler.addMarkers(<%=raw @hash.to_json %>) 
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

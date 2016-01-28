@@ -14,25 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap-datepicker
 //= require handlebars.runtime
-//= require_tree .
-
+//= require_tree
+//= require gmaps/google
+//= require underscore
 
 $(function() {
-  function initMap() {
-  var myLatLng = {lat: -25.363, lng: 131.044};
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
-  });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
-}
-initMap()
 $('.datepicker').datepicker();
 $('.alert').hide();
 

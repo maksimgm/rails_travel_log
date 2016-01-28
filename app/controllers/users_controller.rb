@@ -9,7 +9,11 @@ class UsersController < ApplicationController
   end
 
   def show
-  
+    @trips = @user.trips
+    @hash = Gmaps4rails.build_markers(@trips) do |trip, marker|
+      marker.lat trip.latitude
+      marker.lng trip.longitude
+    end
   end
 
   def edit

@@ -4,6 +4,9 @@ class Trip < ActiveRecord::Base
 
   validates :title, :location, :summary, presence: true
 
+  geocoded_by :location
+  after_validation :geocode
+
   def self.search(search)
     if search
       where("lower(location) LIKE ? OR lower(title) LIKE ?", "%#{search.downcase}%", "%#{search.downcase}%")
