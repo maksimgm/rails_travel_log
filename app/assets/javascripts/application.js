@@ -23,24 +23,10 @@ $(function() {
 $('.datepicker').datepicker();
 $('.alert').hide();
 
-// adds google maps autocomplete in new entry modal
-$('#newModal').on("show.bs.modal", function() {
-    var input = $('.search_location')[0];
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    });
+// 
+$(".search_location").geocomplete(); 
 
-// adds google maps autocomplete in dynamically added entry
-$('.entry-container').on("show.bs.modal", function() {
-    var input = $(this).find('.search_location')[0];
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    });
-
-// adds google maps autocomplete in old entries
-$('.entry-modal').on("show.bs.modal", function() {
-    var input = $(this).find('.search_location')[0];
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    });
-
+ // Option 2: Pass element as argument.
 // delete an entry
 $('.entry-container').on('click', '.delete', function () {
 
