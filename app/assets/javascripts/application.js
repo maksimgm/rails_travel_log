@@ -14,33 +14,19 @@
 //= require jquery_ujs
 //= require bootstrap-datepicker
 //= require handlebars.runtime
-//= require_tree .
-
+//= require_tree
+//= require gmaps/google
+//= require underscore
 
 $(function() {
-  
-  $('.datepicker').datepicker();
-  
-  $('.alert').hide();
 
-// adds google maps autocomplete in new entry modal
-$('#newModal').on("show.bs.modal", function() {
-    var input = $('.search_location')[0];
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    });
+$('.datepicker').datepicker();
+$('.alert').hide();
 
-// adds google maps autocomplete in dynamically added entry
-$('.entry-container').on("show.bs.modal", function() {
-    var input = $(this).find('.search_location')[0];
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    });
+// 
+$(".search_location").geocomplete(); 
 
-// adds google maps autocomplete in old entries
-$('.entry-modal').on("show.bs.modal", function() {
-    var input = $(this).find('.search_location')[0];
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    });
-
+ // Option 2: Pass element as argument.
 // delete an entry
 $('.entry-container').on('click', '.delete', function () {
 
@@ -56,17 +42,17 @@ $('.entry-container').on('click', '.delete', function () {
 
 $('.entry-container').on('submit', 'form', function (e) {
   e.preventDefault();
-  
-
-  var $title = $(this).find('#entry_title').val();
-  var $location = $(this).find('#entry_location').val();
-  var $summary = $(this).find('#entry_summary').val();
-  var $cost = $(this).find('#entry_cost').val();
-  var $image = $(this).find('#entry_image').val();
-  var $video_url = $(this).find('#entry_video_url').val();
-  var $date = $(this).find('#entry_date').val();
-  var entryId = $(this).data('entryid');
-  var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url, date: $date } };
+  var $this = $(this)
+// cache the 'this' vaariable to optomize the code
+  var $title = $this.find('#entry_title').val(),
+   $location = $this.find('#entry_location').val(),
+   $summary = $this.find('#entry_summary').val(),
+   $cost = $this.find('#entry_cost').val(),
+   $image = $this.find('#entry_image').val(),
+   $video_url = $this.find('#entry_video_url').val(),
+   $date = $this.find('#entry_date').val(),
+   entryId = $this.data('entryid'),
+   data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url, date: $date} };
   $('#'+entryId+'Modal').modal('toggle');
 
   $.ajax({
@@ -75,23 +61,23 @@ $('.entry-container').on('submit', 'form', function (e) {
       dataType: 'json',
       data: data
   }).done(function(response) {
-    if (response.errors) {
+    if(response.errors) {
       $('.alert ul').html('');
       response.errors.forEach(function (el, i){
         $('.alert ul').append("<li>"+el+"</li>");
       });
       $('.alert').show();
-    }  else {
+    }else {
       $('.alert').hide();
     var entryid = "#entry"+response.id;
 
-    var title = $(entryid+" h3");
-    var location = $(entryid+" h4 span");
-    var date = $(entryid + " small");
-    var summary = $(entryid + " .summary span");
-    var cost = $(entryid + " .cost span");
-    var image = $(entryid + " .image");
-    var video_url = $(entryid + " .video_url");
+    var title = $(entryid+" h3"),
+      location = $(entryid+" h4 span"),
+      date = $(entryid + " small"),
+      summary = $(entryid + " .summary span"),
+      cost = $(entryid + " .cost span"),
+      image = $(entryid + " .image"),
+      video_url = $(entryid + " .video_url");
     
 
     title.text(response.title);
@@ -110,15 +96,14 @@ $('.entry-container').on('submit', 'form', function (e) {
     // Prevent the default form behavior here.
     e.preventDefault();
 
-    var tripId = $('.new-button').data('tripid');
-
-    var $title = $('#newModal #entry_title').val();// How can you access the subject text from the form?
-    var $location = $('#newModal #entry_location').val();// How can you access the content text from the form?
-    var $summary = $('#newModal #entry_summary').val();
-    var $cost = $('#newModal #entry_cost').val();
-    var $image = $('#newModal #entry_image').val();
-    var $date = $('#newModal #entry_date').val();
-    var $video_url = $('#newModal #entry_video_url').val();
+    var tripId = $('.new-button').data('tripid'),
+      $title = $('#newModal #entry_title').val(),// How can you access the subject text from the form?
+      $location = $('#newModal #entry_location').val(),// How can you access the content text from the form?
+      $summary = $('#newModal #entry_summary').val(),
+      $cost = $('#newModal #entry_cost').val(),
+      $image = $('#newModal #entry_image').val(),
+      $date = $('#newModal #entry_date').val(),
+      $video_url = $('#newModal #entry_video_url').val();
     $('#newModal').modal('toggle');
 
     var data = { entry: {title: $title, location: $location, summary: $summary, cost: $cost, image: $image, video_url: $video_url, date: $date } };
