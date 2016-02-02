@@ -36,6 +36,10 @@ gem 'uploadcare-rails', "~> 1.0"
 gem 'bootstrap_form'
 gem 'rails_12factor', :group => :production
 gem 'puma'
+
+gem 'gmaps4rails'
+gem 'geocoder'
+gem 'underscore-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -50,9 +54,6 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'launchy'
   gem 'dotenv-rails'
-  gem 'gmaps4rails'
-  gem 'geocoder'
-  gem 'underscore-rails'
 end
 
 group :development do
