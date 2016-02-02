@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-datepicker
 //= require handlebars.runtime
-//= require_tree
 //= require underscore
+//= require_tree
 
 $(function() {
 
