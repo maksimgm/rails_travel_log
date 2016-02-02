@@ -15,7 +15,6 @@
 //= require bootstrap-datepicker
 //= require handlebars.runtime
 //= require_tree
-//= require gmaps/google
 //= require underscore
 
 $(function() {
