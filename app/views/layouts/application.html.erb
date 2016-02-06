@@ -5,15 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  
-  <%= csrf_meta_tags %>
+
   <%= include_uploadcare_widget_from_cdn version: "1.5.5", min: true %>
   <%= uploadcare_settings %>
   
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   
-  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places,geometry&sensor=false"></script>
+
   <!-- jquery autocomplete -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.6.5/jquery.geocomplete.js"></script>
   <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>

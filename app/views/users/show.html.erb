@@ -60,7 +60,7 @@ handler.buildMap({
   },
   function(){    
     markers = handler.addMarkers(<%=raw @hash.to_json %>)
-    infowindow: "hello!"
+    infowindow: "hello!";
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(2);
