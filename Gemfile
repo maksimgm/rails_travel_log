@@ -34,14 +34,16 @@ gem 'handlebars_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'uploadcare-rails', "~> 1.0"
 gem 'bootstrap_form'
-gem 'rails_12factor', :group => :production
-gem 'puma'
 
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'underscore-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rails_12factor', :group => :production
+gem 'puma'
+
+ruby "2.2.1"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
