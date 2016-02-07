@@ -42,7 +42,7 @@ $('.entry-container').on('click', '.delete', function () {
 
 $('.entry-container').on('submit', 'form', function (e) {
   e.preventDefault();
-  var $this = $(this)
+  var $this = $(this);
 // cache the 'this' vaariable to optomize the code
   var $title = $this.find('#entry_title').val(),
    $location = $this.find('#entry_location').val(),
