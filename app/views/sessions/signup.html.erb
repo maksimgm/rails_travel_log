@@ -1,9 +1,4 @@
-<div class="container-fluid">
-  <div class="page-header">
-    <h1>Signup</h1>
-  </div>
-</div>
-<div class="container-fluid">
+<div class="container">
   <% if @user.errors.any? %>
       <div id="error_explanation">
         <h2>
@@ -17,33 +12,38 @@
         </ul>
       </div>
     <% end %>
-  <div class="jumbotron">
-    <%= form_for(@user, url: signup_path) do |f|%>
-      <div class="form-group">
-        <%= label_tag :username%>
-        <%= f.text_field :username, autofocus: true, class:'form-control' %>
+  <div class="container">
+    <div class="col-xs-8 col-xs-offset-2 well">
+      <div class="page-header">
+        <h1 class="text-center">Signup</h1>
       </div>
-      <div class="form-group">  
-        <%= label_tag :password%>
-        <%= f.password_field :password, required: true, class:'form-control' %>
-      </div>
-      <div class="form-group">  
-        <%= label_tag :bio%>
-        <%= f.text_area :bio, required: true, class:'form-control' %>
-      </div>
-      <div class="form-group">  
-        <%= label_tag :profile_pic%>
-        <%= f.uploadcare_field :profile_pic, class:'form-control' %>
-      </div>
-      <div class="form-group">  
-        <%= label_tag :email%>
-        <%= f.text_field :email, required: true, class:'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Signup", class: "btn btn-primary" %>
-      </div>
-        <p><%= link_to "Have an account already? Log in here", login_path %></p>
+      <%= form_for(@user, url: signup_path) do |f|%>
+        <div class="form-group">
+          <%= label_tag :username%>
+          <%= f.text_field :username, autofocus: true, class:'form-control' %>
+        </div>
+        <div class="form-group">  
+          <%= label_tag :password%>
+          <%= f.password_field :password, required: true, class:'form-control' %>
+        </div>
+        <div class="form-group">  
+          <%= label_tag :bio%>
+          <%= f.text_area :bio, required: true, class:'form-control' %>
+        </div>
+        <div class="form-group">  
+          <%= label_tag :profile_pic%>
+          <%= f.uploadcare_field :profile_pic, class:'form-control' %>
+        </div>
+        <div class="form-group">  
+          <%= label_tag :email%>
+          <%= f.text_field :email, required: true, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Signup", class: "btn btn-primary" %>
+        </div>
+          <p><%= link_to "Have an account already? Log in here", login_path %></p>
       <% end %>
+    </div>
   </div>
 </div>
 
