@@ -3,18 +3,20 @@
     <h1 class="text-center">Travel Log Login</h1>
   </div>
 </div>
-<div class="jumbotron">
-  <div class="container-fluid">
-  <h4 class="text-center">Please enter your username and password</h4>
-    <%= bootstrap_form_tag url: '/login' do  |f| %>
-      <%= f.text_field :username %>
 
-      <%= f.password_field :password %>
-      <%= f.submit "Log in", class:'btn btn-primary' %>
-    <% end %>
-    <br>
-    <p class="pull-left"><%= link_to "Don't have an account? Sign up here", signup_path%></p>
 
-    <p class="pull-right"><%= link_to "Forgot your password?", new_reset_path %></p>
-  </div>
+  <div class="container">
+    <div class="col-xs-8 col-xs-offset-2 well">
+      <h4 class="text-center">Please enter your username and password</h4>
+      <%= bootstrap_form_tag url: '/login' do  |f| %>
+        <%= f.text_field :username %>
+
+        <%= f.password_field :password %>
+        <%= f.submit "Log in", class:'btn btn-primary' %>
+      <% end %>
+      <br>
+      <p><%= link_to "Don't have an account? Sign up here", signup_path%></p><br>
+
+      <p><%= link_to "Forgot your password?", new_reset_path %></p>
+    </div>
 </div>
