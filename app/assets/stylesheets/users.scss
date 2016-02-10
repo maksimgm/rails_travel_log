@@ -4,8 +4,10 @@
 
 img.profile-pic {
   max-width: 400px;
-  border-radius: 15px;
-  border: teal solid 2px
+  border-radius: 10px;
+  border: teal solid 3px;
+  margin: auto;
+  width: 90%;
 }
 
 .thumbnail{
@@ -13,4 +15,12 @@ img.profile-pic {
   border-radius: 25px;
   box-shadow: 20px 20px 20px;
   padding: 10px;
+}
+#map{
+  border-radius: 10px;
+  border: teal solid 3px;
+  margin: 0;
+  height: 400px; 
+  width: 76%;
+  margin-bottom: 20px;
 }
