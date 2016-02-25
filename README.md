@@ -8,7 +8,6 @@ Travel Log is a full-stack Ruby on Rails application which enables users to docu
 	git clone git@github.com:maksimgm/rails_travel_log.git
 	cd rails_travel_log
 	rake db migrate
-* Rake db migrate
 
 ## Technologies
 * Twitter Bootstrap
